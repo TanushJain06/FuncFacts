@@ -1,0 +1,2 @@
+# FuncFacts
+Generative AI session
