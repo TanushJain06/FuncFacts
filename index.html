@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jason Fun Facts Generator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1.5em 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2em;
+        }
+
+        #fact-container {
+            margin-bottom: 1em;
+            padding: 1.5em;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        #fact-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1em 2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #fact-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fun Facts about Jason!</h1>
+    </header>
+
+    <main>
+        <div id="fact-container">
+            <p id="fact">Click the button to get a fun fact about Jason!</p>
+        </div>
+        <button id="fact-button">Get Jason Fact</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Jason Facts</p>
+    </footer>
+
+    <script>
+        const facts = [
+            {
+                "fact": "Jason is a common male given name derived from the Greek name Iason."
+            },
+            {
+                "fact": "In Greek mythology, Jason was the leader of the Argonauts and is known for his quest for the Golden Fleece."
+            },
+            {
+                "fact": "The name Jason has been popular in various cultures and languages, often symbolizing healing."
+            },
+            {
+                "fact": "Jason Bourne is a fictional character created by author Robert Ludlum, known for his role in espionage thrillers."
+            },
+            {
+                "fact": "Famous people named Jason include actor Jason Momoa and musician Jason Derulo."
+            }
+        ];
+
+        const factContainer = document.getElementById('fact-container');
+        const factDisplay = document.getElementById('fact');
+        const factButton = document.getElementById('fact-button');
+
+        factButton.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            factDisplay.textContent = facts[randomIndex].fact;
+
+            // Animate the fact display
+            factContainer.style.opacity = '0';
+            factContainer.style.transform = 'translateY(-20px)';
+
+            setTimeout(() => {
+                factContainer.style.opacity = '1';
+                factContainer.style.transform = 'translateY(0)';
+            }, 300); // Match this timeout with the CSS transition duration
+        });
+    </script>
+</body>
+</html>
